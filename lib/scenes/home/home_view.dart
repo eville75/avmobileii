@@ -26,11 +26,11 @@ class _HomeViewState extends State<HomeView> {
     widget.viewModel.loadPlaylists(widget.mood);
   }
 
-  Future<void> _openYoutube(String videoId) async {
-    final Uri url = Uri.parse("https://www.youtube.com/watch?v=$videoId");
+  Future<void> _openPlaylist(String playlistId) async {
+    final url = Uri.parse("https://www.youtube.com/playlist?list=$playlistId");
 
     if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
-      print("Erro ao abrir YouTube");
+      print("Erro ao abrir playlist no YouTube");
     }
   }
 
@@ -74,7 +74,7 @@ class _HomeViewState extends State<HomeView> {
                 return PlaylistCard(
                   title: p.title,
                   thumbnailUrl: p.thumbnailUrl,
-                  onTap: () => _openYoutube(p.id),
+                  onTap: () => _openPlaylist(p.id),
                 );
               },
             );

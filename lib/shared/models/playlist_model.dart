@@ -10,10 +10,18 @@ class PlaylistModel {
   });
 
   factory PlaylistModel.fromMap(Map<String, dynamic> map) {
+    final snippet = map["snippet"];
+
+    final thumbnails = snippet["thumbnails"];
+    final thumb = thumbnails["high"]?["url"] ??
+        thumbnails["medium"]?["url"] ??
+        thumbnails["default"]?["url"] ??
+        "";
+
     return PlaylistModel(
-      id: map["id"] ?? "",
-      title: map["title"] ?? "",
-      thumbnailUrl: map["thumbnail"] ?? "",
+      id: map["id"]?["playlistId"] ?? "",
+      title: snippet["title"] ?? "",
+      thumbnailUrl: thumb,
     );
   }
 }
