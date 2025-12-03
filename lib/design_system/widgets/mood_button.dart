@@ -26,7 +26,7 @@ class MoodButton extends StatelessWidget {
       case MoodType.positive:
         return AppColors.positive;
       case MoodType.negative:
-        return const Color.fromRGBO(248, 81, 73, 100);
+        return const Color.fromRGBO(248, 81, 73, 1);
       case MoodType.neutral:
       default:
         return AppColors.neutral;

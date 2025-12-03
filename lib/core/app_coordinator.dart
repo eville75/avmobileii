@@ -21,8 +21,10 @@ class AppCoordinator {
         return MaterialPageRoute(builder: (_) => HomeFactory.create(mood));
 
       case AppRoutes.settings:
-        final user = settings.arguments as UserModel;
-        return MaterialPageRoute(builder: (_) => SettingsFactory.create(user));
+        // ❌ ANTIGO: final user = settings.arguments as UserModel;
+        // ❌ ANTIGO: return MaterialPageRoute(builder: (_) => SettingsFactory.create(user));
+        // ✔ NOVO:
+        return MaterialPageRoute(builder: (_) => SettingsFactory.create());
 
       default:
         return MaterialPageRoute(builder: (_) => LoginFactory.create());

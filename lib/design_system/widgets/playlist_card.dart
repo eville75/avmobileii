@@ -30,9 +30,9 @@ class PlaylistCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // IMAGEM — retangular, igual ao protótipo
+              // Imagem vertical no padrão do protótipo
               AspectRatio(
-                aspectRatio: 3 / 4, // ⬅ retangular vertical (igual ao protótipo)
+                aspectRatio: 3 / 4,
                 child: Image.network(
                   thumbnailUrl,
                   fit: BoxFit.cover,

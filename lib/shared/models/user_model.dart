@@ -2,30 +2,44 @@ class UserModel {
   final String id;
   final String name;
   final String email;
-  final String? avatarUrl;
+  final String avatarUrl;
 
-  UserModel({
+  const UserModel({
     required this.id,
     required this.name,
     required this.email,
-    this.avatarUrl,
+    required this.avatarUrl,
   });
 
-  factory UserModel.fromMap(Map<String, dynamic> map) {
+  UserModel copyWith({
+    String? id,
+    String? name,
+    String? email,
+    String? avatarUrl,
+  }) {
     return UserModel(
-      id: map["id"] ?? "",
-      name: map["name"] ?? "",
-      email: map["email"] ?? "",
-      avatarUrl: map["avatarUrl"],
+      id: id ?? this.id,
+      name: name ?? this.name,
+      email: email ?? this.email,
+      avatarUrl: avatarUrl ?? this.avatarUrl,
     );
   }
 
-  Map<String, dynamic> toMap() {
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+    return UserModel(
+      id: json['id'] ?? "",
+      name: json['name'] ?? '',
+      email: json['email'] ?? '',
+      avatarUrl: json['avatarUrl'] ?? '',
+    );
+  }
+
+  Map<String, dynamic> toJson() {
     return {
-      "id": id,
-      "name": name,
-      "email": email,
-      "avatarUrl": avatarUrl,
+      'id': id,
+      'name': name,
+      'email': email,
+      'avatarUrl': avatarUrl,
     };
   }
 }

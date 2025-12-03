@@ -18,4 +18,7 @@ class AppColors {
   // Glass Effect
   static const Color glassEffect = Color(0x1AFFFFFF);
   static const Color glassBorder = Color(0x33FFFFFF);
+
+  // Missing color used in AlertDialog
+  static const Color card = Color(0xFF1E1E1E);
 }

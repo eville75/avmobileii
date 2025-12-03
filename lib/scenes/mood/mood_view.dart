@@ -24,7 +24,7 @@ class MoodView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // ---------- TOPO COM CONFIGURAÇÕES ----------
+                // Header com Configurações
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -35,7 +35,9 @@ class MoodView extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (_) => SettingsFactory.create(viewModel.user),
+                            // ❌ ANTIGO: SettingsFactory.create(viewModel.user)
+                            // ✔ NOVO:
+                            builder: (_) => SettingsFactory.create(),
                           ),
                         );
                       },
@@ -51,7 +53,7 @@ class MoodView extends StatelessWidget {
 
                 const SizedBox(height: AppSpacing.xl),
 
-                // ------------ POSITIVOS ------------
+                // POSITIVOS
                 Text("Sentimentos Positivos", style: AppTypography.h2),
                 const SizedBox(height: AppSpacing.sm),
                 Wrap(
@@ -66,7 +68,7 @@ class MoodView extends StatelessWidget {
 
                 const SizedBox(height: AppSpacing.lg),
 
-                // ------------ NEGATIVOS ------------
+                // NEGATIVOS
                 Text("Sentimentos Negativos", style: AppTypography.h2),
                 const SizedBox(height: AppSpacing.sm),
                 Wrap(
@@ -81,7 +83,7 @@ class MoodView extends StatelessWidget {
 
                 const SizedBox(height: AppSpacing.lg),
 
-                // ------------ NEUTROS ------------
+                // NEUTROS
                 Text("Sentimentos Neutros", style: AppTypography.h2),
                 const SizedBox(height: AppSpacing.sm),
                 Wrap(
