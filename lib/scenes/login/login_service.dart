@@ -5,10 +5,10 @@ class LoginService {
     await Future.delayed(const Duration(milliseconds: 500));
 
     // Simulação apenas
-    if (email == "teste@gmail.com" && password == "123456") {
+    if (email == "eville@teste.com" && password == "123") {
       return UserModel(
         id: "001",
-        name: "Sapatinha",
+        name: "EVILLE",
         email: email,
         avatarUrl:
             "https://ui-avatars.com/api/?name=S&background=5A86FF&color=fff",
