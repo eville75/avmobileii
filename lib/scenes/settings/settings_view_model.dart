@@ -1,28 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:mibilleii/shared/models/user_model.dart';
-import 'package:mibilleii/scenes/settings/settings_service.dart';
+import '../../shared/models/user_model.dart';
+import 'settings_service.dart';
 
 class SettingsViewModel extends ChangeNotifier {
   final SettingsService _service;
-
   UserModel user;
 
-  SettingsViewModel({required SettingsService service})
-      : _service = service,
-        user = service.getUser();
+  SettingsViewModel({
+    required SettingsService service,
+    required this.user,
+  }) : _service = service;
 
   void updateName(String newName) {
     user = user.copyWith(name: newName);
+    _service.saveUser(user);
     notifyListeners();
   }
 
   void updateEmail(String newEmail) {
     user = user.copyWith(email: newEmail);
+    _service.saveUser(user);
     notifyListeners();
-  }
-
-  Future<void> save() async {
-    await _service.saveUser(user);
   }
 
   Future<void> logout(BuildContext context) async {

@@ -25,7 +25,7 @@ class SettingsView extends StatelessWidget {
         body: ListView(
           padding: const EdgeInsets.all(24),
           children: [
-            // ----------- SEM FOTO -----------
+            // ----------- CABEÇALHO COM NOME E EMAIL -----------
             Column(
               children: [
                 const SizedBox(height: 12),
@@ -37,43 +37,54 @@ class SettingsView extends StatelessWidget {
 
             const SizedBox(height: 32),
 
+            // -----------------------------------------
+            // 🔹 COMO FUNCIONA O APP (NOVO)
+            // -----------------------------------------
             _settingsTile(
-              icon: Icons.person,
-              label: "Editar nome",
-              onTap: () => _showEditDialog(
-                context,
-                title: "Editar nome",
-                initialValue: user.name,
-                onSave: (v) => viewModel.updateName(v),
-              ),
-            ),
+              icon: Icons.help_outline,
+              label: "Como funciona o app",
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (_) => AlertDialog(
+                    backgroundColor: AppColors.card,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    title: Text("Como funciona o Mood Music", style: AppTypography.h2),
+                    content: SingleChildScrollView(
+                      child: Text(
+                        """
+O Mood Music ajuda você a encontrar playlists baseadas no seu humor.
 
-            _settingsTile(
-              icon: Icons.email,
-              label: "Editar e-mail",
-              onTap: () => _showEditDialog(
-                context,
-                title: "Editar e-mail",
-                initialValue: user.email,
-                onSave: (v) => viewModel.updateEmail(v),
-              ),
-            ),
+🎧 COMO FUNCIONA:
+• Você escolhe seu sentimento atual.
+• O app identifica a categoria emocional (positiva, negativa ou neutra).
+• Uma playlist sugerida é exibida automaticamente.
 
-            _settingsTile(
-              icon: Icons.lock,
-              label: "Alterar senha",
-              onTap: () => _showEditDialog(
-                context,
-                title: "Nova senha",
-                initialValue: "",
-                isPassword: true,
-                onSave: (v) {},
-              ),
+💙 OBJETIVO:
+Oferecer uma experiência simples, personalizada e rápida para conectar seu estado emocional com músicas que combinam com você.
+
+✨ Dica:
+Use diariamente para registrar seu humor e descobrir novos estilos musicais recomendados!
+                        """,
+                        style: AppTypography.body,
+                      ),
+                    ),
+                    actions: [
+                      TextButton(
+                        child: const Text("Entendi"),
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
 
             const SizedBox(height: 16),
 
-            // ----------- SOBRE O APP SEM LICENSES -----------
+            // ----------- SOBRE O APP -----------
             _settingsTile(
               icon: Icons.info_outline,
               label: "Sobre o app",
@@ -103,6 +114,7 @@ class SettingsView extends StatelessWidget {
 
             const SizedBox(height: 16),
 
+            // ----------- SAIR -----------
             _settingsTile(
               icon: Icons.logout,
               label: "Sair",
@@ -115,6 +127,9 @@ class SettingsView extends StatelessWidget {
     );
   }
 
+  // --------------------------------------------------------
+  //  TILE PADRÃO
+  // --------------------------------------------------------
   Widget _settingsTile({
     required IconData icon,
     required String label,
@@ -133,44 +148,6 @@ class SettingsView extends StatelessWidget {
         title: Text(label, style: AppTypography.body.copyWith(color: color)),
         trailing: Icon(Icons.chevron_right, color: color),
         onTap: onTap,
-      ),
-    );
-  }
-
-  void _showEditDialog(
-    BuildContext context, {
-    required String title,
-    required String initialValue,
-    required Function(String) onSave,
-    bool isPassword = false,
-  }) {
-    final controller = TextEditingController(text: initialValue);
-
-    showDialog(
-      context: context,
-      builder: (_) => AlertDialog(
-        backgroundColor: AppColors.card,
-        title: Text(title, style: AppTypography.h2),
-        content: TextField(
-          controller: controller,
-          obscureText: isPassword,
-          decoration: const InputDecoration(
-            border: OutlineInputBorder(),
-          ),
-        ),
-        actions: [
-          TextButton(
-            child: const Text("Cancelar"),
-            onPressed: () => Navigator.pop(context),
-          ),
-          TextButton(
-            child: const Text("Salvar"),
-            onPressed: () {
-              onSave(controller.text);
-              Navigator.pop(context);
-            },
-          ),
-        ],
       ),
     );
   }
