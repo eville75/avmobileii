@@ -57,15 +57,15 @@ class SettingsView extends StatelessWidget {
                         """
 O Mood Music ajuda você a encontrar playlists baseadas no seu humor.
 
-🎧 COMO FUNCIONA:
+COMO FUNCIONA:
 • Você escolhe seu sentimento atual.
 • O app identifica a categoria emocional (positiva, negativa ou neutra).
 • Uma playlist sugerida é exibida automaticamente.
 
-💙 OBJETIVO:
+OBJETIVO:
 Oferecer uma experiência simples, personalizada e rápida para conectar seu estado emocional com músicas que combinam com você.
 
-✨ Dica:
+Dica:
 Use diariamente para registrar seu humor e descobrir novos estilos musicais recomendados!
                         """,
                         style: AppTypography.body,
@@ -98,7 +98,7 @@ Use diariamente para registrar seu humor e descobrir novos estilos musicais reco
                     ),
                     title: Text("Mood Music", style: AppTypography.h2),
                     content: Text(
-                      "App desenvolvido pela Eville 💙",
+                      "App desenvolvido pela Eville.",
                       style: AppTypography.body,
                     ),
                     actions: [

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'core/app_coordinator.dart';
 import 'core/app_routes.dart';
-import 'scenes/login/login_factory.dart';
 import 'design_system/theme/app_theme.dart';
 
 void main() {
